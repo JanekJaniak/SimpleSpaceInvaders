@@ -1,0 +1,12 @@
+.app {
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-window {
+  width: 936px;
+  height: 702px;
+  background-color: black;
+}
