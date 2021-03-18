@@ -5,8 +5,36 @@
   align-items: center;
 }
 
-.game-window {
+.game-container {
   width: 936px;
   height: 702px;
   background-color: black;
+}
+
+.game-info {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.game-score {
+  color: rgb(227, 58, 233);
+}
+
+.game-window {
+  height: 79%;
+  width: 100%;
+  background-color: rgb(1, 1, 39);
+}
+
+.player-info {
+  height: 8%;
+  width: 100%;
+  border-top: 3px solid green;
+}
+
+.player-lifes {
+  margin-left: 50px;
+  color: rgb(91, 248, 60);
 }
