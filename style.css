@@ -16,7 +16,7 @@ body, html {
 }
 
 .game-container {
-  width: 1000px;
+  width: 750px;
   height: 800px;
   background-color: black;
   border-style: solid;
@@ -25,7 +25,6 @@ body, html {
 }
 
 .game-info {
-  height: 10%;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -36,13 +35,41 @@ body, html {
 }
 
 .game-window {
-  height: 600px;
-  width: 1000px;
+  height: 500px;
+  width: 750px;
   background-color: rgb(1, 1, 39);
+  display: flex;
+  flex-wrap: wrap;
 }
 
+.tile {
+  width: 50px;
+  height: 50px;
+}
+
+.alien {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 50px solid greenyellow;
+}
+
+.player {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 50px solid greenyellow;
+}
+  /* height: 0;
+  width: 50px;
+  border-bottom: 50px solid red;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+} */
+
 .player-info {
-  height: 8%;
   width: 100%;
   border-top: 3px solid green;
 }
