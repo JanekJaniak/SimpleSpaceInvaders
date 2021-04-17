@@ -18,7 +18,7 @@ const renderGrid = () => {
 }
 
 const renderAliens = () => {
-  for (let i=0; i <= aliens.length; i++) {
+  for (let i=0; i < aliens.length; i++) {
     grid[aliens[i]].classList.add('alien');
   }
 }
