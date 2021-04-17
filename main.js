@@ -13,7 +13,7 @@ const renderGrid = () => {
       tile.className = 'tile';
       tile.dataset.tileId = i;
       gridContainer.appendChild(tile);
-      grid.push(tile)
+      grid.push(tile);
   }
 }
 
@@ -33,4 +33,4 @@ const startNewGame = () => {
   renderPlayer();
 }
 
-startNewGame()
+startNewGame();
