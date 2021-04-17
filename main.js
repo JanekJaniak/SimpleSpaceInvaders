@@ -27,10 +27,22 @@ const renderPlayer = () => {
   grid[142].classList.add('player');
 }
 
+const welcomeScreen = () => {
+  const container = document.createElement('div');
+  const welcomeTxt = document.createElement('h1');
+
+  container.className='welcomeContainer';
+  gridContainer.appendChild(container);
+
+  welcomeTxt.className='welcomeTxt';
+  container.appendChild(welcomeTxt);
+  welcomeTxt.innerHTML='Press space to start';
+}
+
 const startNewGame = () => {
   renderGrid();
   renderAliens();
   renderPlayer();
 }
 
-startNewGame();
+welcomeScreen()
