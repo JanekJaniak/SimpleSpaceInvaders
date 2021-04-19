@@ -1,4 +1,7 @@
 const gridContainer = document.querySelector('[data-game-window]');
+document.addEventListener('keypress', (event) => {
+  event.keyCode == 13 ? startNewGame() : null;
+})
 
 const grid = [];
 const aliens = [
@@ -27,10 +30,23 @@ const renderPlayer = () => {
   grid[142].classList.add('player');
 }
 
+const welcomeScreen = () => {
+  const container = document.createElement('div');
+  const welcomeTxt = document.createElement('h1');
+
+  container.className='welcomeContainer';
+  gridContainer.appendChild(container);
+
+  welcomeTxt.className='welcomeTxt';
+  container.appendChild(welcomeTxt);
+  welcomeTxt.innerHTML='Press enter to start';
+}
+
 const startNewGame = () => {
+  gridContainer.innerHTML=''
   renderGrid();
   renderAliens();
   renderPlayer();
 }
 
-startNewGame();
+welcomeScreen()
