@@ -1,4 +1,7 @@
 const gridContainer = document.querySelector('[data-game-window]');
+document.addEventListener('keypress', (event) => {
+  event.keyCode == 13 ? startNewGame() : null;
+})
 
 const grid = [];
 const aliens = [
@@ -36,10 +39,11 @@ const welcomeScreen = () => {
 
   welcomeTxt.className='welcomeTxt';
   container.appendChild(welcomeTxt);
-  welcomeTxt.innerHTML='Press space to start';
+  welcomeTxt.innerHTML='Press enter to start';
 }
 
 const startNewGame = () => {
+  gridContainer.innerHTML=''
   renderGrid();
   renderAliens();
   renderPlayer();
