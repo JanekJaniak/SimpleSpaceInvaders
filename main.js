@@ -5,6 +5,10 @@ document.addEventListener('keypress', (event) => {
   }
 });
 
+const gameScore = document.querySelector('[data-game-score]');
+const gameLevel = document.querySelector('[data-game-level');
+const playerLifes = document.querySelector('[data-player-lifes]');
+
 const grid = [];
 const aliens = [
   3,5,7,9,11,13,
@@ -13,10 +17,10 @@ const aliens = [
 ]
 
 const gameState = {
-  isGameStarted: false,
+  isGameStarted: true,
   isGameOver: false,
-  player: {
-    lives: 3,
+  gameStats: {
+    lifes: 3,
     score: 0,
     level: 1
   },
@@ -58,9 +62,13 @@ const welcomeScreen = () => {
 const startNewGame = () => {
   gameState.isGameStarted = true;
   gridContainer.innerHTML='';
+  gameScore.innerHTML=`SCORE: ${gameState.gameStats.score}`;
+  gameLevel.innerHTML=`LEVEL: ${gameState.gameStats.level}`;
+  playerLifes.innerHTML=`LIFES: 
+    ${'&#9829'.repeat(gameState.gameStats.lifes)}`;
   renderGrid();
   renderAliens();
   renderPlayer();
 }
 
-welcomeScreen()
+startNewGame()
