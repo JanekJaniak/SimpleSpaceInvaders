@@ -48,8 +48,9 @@ const gameBorders = {
 };
 
 const gameState = {
-  isGameStarted: true,
+  isGameStarted: false,
   isGameOver: false,
+  playerPosition: 161,
   gameStats: {
     lifes: 3,
     score: 0,
@@ -75,7 +76,8 @@ const renderAliens = () => {
 };
 
 const renderPlayer = () => {
-  grid[160].classList.add('player');
+  const position = gameState.playerPosition
+  grid[position].classList.add('player');
 };
 
 const welcomeScreen = () => {
@@ -91,16 +93,18 @@ const welcomeScreen = () => {
 };
 
 const startNewGame = () => {
-  gameState.isGameStarted = true;
-  gridContainer.innerHTML='';
-  gameScore.innerHTML=`SCORE: ${gameState.gameStats.score}`;
-  gameLevel.innerHTML=`LEVEL: ${gameState.gameStats.level}`;
-  playerLifes.innerHTML=`LIFES: 
-    ${'&#9829'.repeat(gameState.gameStats.lifes)}`;
-  renderGrid();
-  renderAliens();
-  renderPlayer();
-  createBorders();
+  if(gameState.isGameStarted == false) {
+    gameState.isGameStarted = true;
+    gridContainer.innerHTML='';
+    gameScore.innerHTML=`SCORE: ${gameState.gameStats.score}`;
+    gameLevel.innerHTML=`LEVEL: ${gameState.gameStats.level}`;
+    playerLifes.innerHTML=`LIFES: 
+      ${'&#9829'.repeat(gameState.gameStats.lifes)}`;
+    renderGrid();
+    renderAliens();
+    renderPlayer();
+    createBorders();
+  }
 };
 
 const createBorders = () => {
@@ -136,11 +140,19 @@ const createBorders = () => {
 }
 
 const movePlayer = (keyCode) => {
+  const playersDiv = document.querySelector(
+  `[data-tile-id='${gameState.playerPosition}']`)
+  const currentCode = gameState.playerPosition
+
+  playersDiv.classList.remove('player');
+  
   if(keyCode == 37) {
-    console.log('left');
+    currentCode >= 154 ? gameState.playerPosition -= 1 : null;
   } else {
-    console.log('right');
+    currentCode <= 168 ? gameState.playerPosition +=  1 : null;
   }
+
+  renderPlayer();
 }
 
 const fireRocket = () => {
