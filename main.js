@@ -1,9 +1,34 @@
 const gridContainer = document.querySelector('[data-game-window]');
+
 document.addEventListener('keypress', (event) => {
-  if(gameState.isGameStarted === false) {
-    event.keyCode == 13 ? startNewGame() : null;
+  switch (event.keyCode) {
+    case 13 :
+      if(gameState.isGameStarted === false) {
+        startNewGame();
+      }
+      break;
+    case 32 :
+      fireRocket();
+      break;
+    default :
+      console.log('No key bind');
   }
 });
+
+document.addEventListener('keydown', (event) => {
+  switch (event.keyCode) {
+    case 37 :
+      movePlayer('37');
+      break;
+    case 39 :
+      movePlayer('39');
+      break;
+    default:
+      console.log('No key bind');
+      
+  }
+
+})
 
 const gameScore = document.querySelector('[data-game-score]');
 const gameLevel = document.querySelector('[data-game-level');
@@ -108,6 +133,19 @@ const createBorders = () => {
       rightBorderTile = rightBorderTile + 17;
     } 
   }
+}
+
+const movePlayer = (keyCode) => {
+  if(keyCode == 37) {
+    console.log('left');
+  } else {
+    console.log('right');
+  }
+}
+
+const fireRocket = () => {
+  console.log('Fire!!!');
+  
 }
 
 startNewGame();
