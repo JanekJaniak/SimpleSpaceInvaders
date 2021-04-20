@@ -5,13 +5,13 @@ document.addEventListener('keypress', (event) => {
 
 const grid = [];
 const aliens = [
-  2,4,6,8,10,12,
-  17,19,21,23,25,27,
-  32,34,36,38,40,42
+  3,5,7,9,11,13,
+  20,22,24,26,28,30,
+  37,39,41,43,45,47
 ]
 
 const renderGrid = () => {
-    for (let i=0; i<150; i++) {
+    for (let i=0; i<170; i++) {
       const tile = document.createElement('div');
       tile.className = 'tile';
       tile.dataset.tileId = i;
@@ -27,7 +27,7 @@ const renderAliens = () => {
 }
 
 const renderPlayer = () => {
-  grid[142].classList.add('player');
+  grid[160].classList.add('player');
 }
 
 const welcomeScreen = () => {
