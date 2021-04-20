@@ -14,7 +14,13 @@ const aliens = [
   3,5,7,9,11,13,
   20,22,24,26,28,30,
   37,39,41,43,45,47
-]
+];
+const gameBorders = {
+  top: [],
+  right: [],
+  bottom: [],
+  left: []
+};
 
 const gameState = {
   isGameStarted: true,
@@ -25,7 +31,7 @@ const gameState = {
     level: 1
   },
   remainingAliens: [],
-}
+};
 
 const renderGrid = () => {
     for (let i=0; i<170; i++) {
@@ -35,17 +41,17 @@ const renderGrid = () => {
       gridContainer.appendChild(tile);
       grid.push(tile);
   }
-}
+};
 
 const renderAliens = () => {
   for (let i=0; i < aliens.length; i++) {
     grid[aliens[i]].classList.add('alien');
   }
-}
+};
 
 const renderPlayer = () => {
   grid[160].classList.add('player');
-}
+};
 
 const welcomeScreen = () => {
   const container = document.createElement('div');
@@ -57,7 +63,7 @@ const welcomeScreen = () => {
   welcomeTxt.className='welcomeTxt';
   container.appendChild(welcomeTxt);
   welcomeTxt.innerHTML='Press enter to start';
-}
+};
 
 const startNewGame = () => {
   gameState.isGameStarted = true;
@@ -69,6 +75,39 @@ const startNewGame = () => {
   renderGrid();
   renderAliens();
   renderPlayer();
+  createBorders();
+};
+
+const createBorders = () => {
+  for(let i=0; i<17; i++) {
+    gameBorders.top.push(i)
+  }
+
+  for(let i=153; i<189; i++) {
+    gameBorders.bottom.push(i)
+  }
+
+  let leftBorderTile = 0;
+  for(let i=0; i<10; i++) {
+    if(leftBorderTile === 0) {
+      gameBorders.left.push(i)
+      leftBorderTile = leftBorderTile + 17 
+    } else {
+      gameBorders.left.push(leftBorderTile)
+      leftBorderTile = leftBorderTile + 17;
+    } 
+  }
+
+  let rightBorderTile = 16;
+  for(let i=0; i<10; i++) {
+    if(rightBorderTile === 16) {
+      gameBorders.right.push(rightBorderTile)
+      rightBorderTile = rightBorderTile + 17 
+    } else {
+      gameBorders.right.push(rightBorderTile)
+      rightBorderTile = rightBorderTile + 17;
+    } 
+  }
 }
 
-startNewGame()
+startNewGame();

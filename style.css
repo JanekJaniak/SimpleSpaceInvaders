@@ -80,11 +80,11 @@ body, html {
 }
 
 .player {
-  height: 0;
-  width: 20px;
-  border-bottom: 50px solid red;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
+  height: 20px;
+  width: 14px;
+  border-bottom: 30px solid red;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
 }
 
 .player-info {
