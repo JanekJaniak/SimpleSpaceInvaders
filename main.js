@@ -35,11 +35,6 @@ const gameLevel = document.querySelector('[data-game-level');
 const playerLifes = document.querySelector('[data-player-lifes]');
 
 const grid = [];
-const aliens = [
-  3,5,7,9,11,13,
-  20,22,24,26,28,30,
-  37,39,41,43,45,47
-];
 const gameBorders = {
   top: [],
   right: [],
@@ -56,7 +51,10 @@ const gameState = {
     score: 0,
     level: 1
   },
-  remainingAliens: [],
+  remainingAliens: [
+    3,5,7,9,11,13,
+    20,22,24,26,28,30,
+    37,39,41,43,45,47],
 };
 
 const renderGrid = () => {
@@ -70,8 +68,8 @@ const renderGrid = () => {
 };
 
 const renderAliens = () => {
-  for (let i=0; i < aliens.length; i++) {
-    grid[aliens[i]].classList.add('alien');
+  for (let i=0; i < gameState.remainingAliens.length; i++) {
+    grid[gameState.remainingAliens[i]].classList.add('alien');
   }
 };
 
@@ -156,8 +154,35 @@ const movePlayer = (keyCode) => {
 }
 
 const fireRocket = () => {
+  moveAliens();
   console.log('Fire!!!');
+}
+
+const moveAliens = () => {
+  // setInterval(() => {
+  //   const alienDivs = document.querySelectorAll('div.alien')
+  //   console.log('Alien start');
+  //   console.log(alienDivs);
   
+  // },2000)
+    const alienNodes = document.querySelectorAll('div.alien')
+    alienNodes.forEach((alienNode) => {
+      alienNode.classList.remove('alien')
+    });
+
+    console.log(gameState.remainingAliens);
+    const aliens = gameState.remainingAliens;
+    let newAliens = [];
+    
+    console.log(aliens);
+    
+    for(let i =0; i<aliens.length;i++){
+      let newAlien = aliens[i] + 1;
+      newAliens.push(newAlien)
+    }
+
+    gameState.remainingAliens = newAliens;
+    
 }
 
 startNewGame();
