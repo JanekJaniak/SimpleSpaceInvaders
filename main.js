@@ -174,15 +174,13 @@ const moveAliens = () => {
     const aliens = gameState.remainingAliens;
     let newAliens = [];
     
-    console.log(aliens);
-    
     for(let i =0; i<aliens.length;i++){
       let newAlien = aliens[i] + 1;
       newAliens.push(newAlien)
     }
-
-    gameState.remainingAliens = newAliens;
     
+    gameState.remainingAliens = newAliens;
+    renderAliens()
 }
 
 startNewGame();
