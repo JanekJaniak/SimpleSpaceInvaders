@@ -41,6 +41,7 @@ const gameBorders = {
   bottom: [],
   left: []
 };
+const alienDirection =  'left';
 
 const gameState = {
   isGameStarted: false,
@@ -175,8 +176,13 @@ const moveAliens = () => {
     let newAliens = [];
     
     for(let i =0; i<aliens.length;i++){
-      let newAlien = aliens[i] + 1;
-      newAliens.push(newAlien)
+      if(alienDirection === 'left') {
+        let newAlien = aliens[i] + 1;
+        newAliens.push(newAlien)
+      } else{ 
+        let newAlien = aliens[i] - 1;
+        newAliens.push(newAlien)
+      }
     }
     
     gameState.remainingAliens = newAliens;
