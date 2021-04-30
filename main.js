@@ -186,6 +186,9 @@ const moveAliens = () => {
     }
     
     gameState.remainingAliens = newAliens;
+    if(gameBorders.left.some(gameState.remainingAliens)) {
+      console.log('yeach right');
+    } 
     renderAliens()
 }
 
